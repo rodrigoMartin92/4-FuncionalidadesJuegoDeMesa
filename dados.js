@@ -1,19 +1,16 @@
-var dado1Atk = 0
-var dado2Atk = 0
-var dado3Atk = 0
-var dado1Def = 0
-var dado2Def = 0
-var dado3Def = 0
-const Ataque = "Ataque"
-const Defensa = "Defensa"
-var ganadorDado1
-var ganadorDado2
-var ganadorDado3
-var CantidadDeAtaques = 0
-var CantidadDeDefensas = 0
+var dado1Atk = 0, dado2Atk = 0, dado3Atk = 0, dado4Atk = 0;
+
+var dado1Def = 0, dado2Def = 0, dado3Def = 0, dado4Def = 0;
+
+const Ataque = "Atacante", Defensa = "Defendiente";
+
+var ganadorDado1, ganadorDado2, ganadorDado3, ganadorDado4;
+
+var CantidadDeAtaques = 0, CantidadDeDefensas = 0;
 
 function lanzarDadoAtaque() {
     var dadosAtacantes = [
+        Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1
@@ -23,13 +20,19 @@ function lanzarDadoAtaque() {
     dado1Atk = dadosAtacantes[0];
     dado2Atk = dadosAtacantes[1];
     dado3Atk = dadosAtacantes[2];
-    document.getElementById("idDado1").innerHTML = dado1Atk;
-    document.getElementById("idDado2").innerHTML = dado2Atk;
-    document.getElementById("idDado3").innerHTML = dado3Atk;
+    dado4Atk = dadosAtacantes[3];
+
+/*     console.log("dado1Atk = " + dado1Atk + " - dado2Atk = " + dado2Atk + " - dado3Atk = " + dado3Atk + " - dado4Atk = " + dado4Atk) */
+
+    document.getElementById("idDadoA1").innerHTML = dado1Atk;
+    document.getElementById("idDadoA2").innerHTML = dado2Atk;
+    document.getElementById("idDadoA3").innerHTML = dado3Atk;
+    document.getElementById("idDadoA4").innerHTML = dado4Atk;
 }
 
 function lanzarDadoDefensa() {
     var dadosDefendientes = [
+        Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1
@@ -39,10 +42,14 @@ function lanzarDadoDefensa() {
     dado1Def = dadosDefendientes[0];
     dado2Def = dadosDefendientes[1];
     dado3Def = dadosDefendientes[2];
+    dado4Def = dadosDefendientes[3];
 
-    document.getElementById("idDado4").innerHTML = dado1Def;
-    document.getElementById("idDado5").innerHTML = dado2Def;
-    document.getElementById("idDado6").innerHTML = dado3Def;
+/*     console.log("dado1Def = " + dado1Def + " - dado2Def = " + dado2Def + " - dado3Def = " + dado3Def + " - dado4Def = " + dado4Def) */
+
+    document.getElementById("idDadoD1").innerHTML = dado1Def;
+    document.getElementById("idDadoD2").innerHTML = dado2Def;
+    document.getElementById("idDadoD3").innerHTML = dado3Def;
+    document.getElementById("idDadoD4").innerHTML = dado4Def;
 }
 
 function compararDados() {
@@ -64,35 +71,55 @@ function compararDados() {
     else {
         ganadorDado3 = Defensa;
     }
+    if (dado4Atk > dado4Def) {
+        ganadorDado4 = Ataque;
+    }
+    else {
+        ganadorDado4 = Defensa;
+    }
     document.getElementById("idGanador1").innerHTML = ganadorDado1;
     document.getElementById("idGanador2").innerHTML = ganadorDado2;
     document.getElementById("idGanador3").innerHTML = ganadorDado3;
+    document.getElementById("idGanador4").innerHTML = ganadorDado4;
+    return ganadorDado1,ganadorDado2,ganadorDado3,ganadorDado4;
 }
 
 function sumatoriaDeComparaciones() {
-    console.log("ganadorDado1 = " + ganadorDado1 + " - ganadorDado2 = " + ganadorDado2 + " - ganadorDado3 = " + ganadorDado3)
-    if (ganadorDado1 === Ataque) {
+    if (ganadorDado1 === "Atacante") {
         CantidadDeAtaques++;
-    } else {
+    }
+    if (ganadorDado1 === "Defendiente") {
         CantidadDeDefensas++;
     }
-    if (ganadorDado2 === Ataque) {
+    if (ganadorDado2 === "Atacante") {
         CantidadDeAtaques++;
-    } else {
+    }
+    if (ganadorDado2 === "Defendiente") {
         CantidadDeDefensas++;
     }
-    if (ganadorDado3 === Ataque) {
-        CantidadDeDefensas++;
-    } else {
+    if (ganadorDado3 === "Atacante") {
+        CantidadDeAtaques++;
+    }
+    if (ganadorDado3 === "Defendiente") {
         CantidadDeDefensas++;
     }
-    
-    console.log("CantidadDeAtaques = " + CantidadDeAtaques + " - CantidadDeDefensas = " + CantidadDeDefensas+" - Porcentaje de defensas = "+((CantidadDeDefensas*100/(CantidadDeAtaques+CantidadDeDefensas))))
+    if (ganadorDado4 === "Atacante") {
+        CantidadDeAtaques++;
+    }
+    if (ganadorDado4 === "Defendiente") {
+        CantidadDeDefensas++;
+    }
 }
 
+function mostrarDatos(){
+    console.log("ganadorDado1 = " + ganadorDado1 + " - ganadorDado2 = " + ganadorDado2 + " - ganadorDado3 = " + ganadorDado3 + " - ganadorDado4 = " + ganadorDado4)
+
+    console.log("CantidadDeAtaques = " + CantidadDeAtaques + " - CantidadDeDefensas = " + CantidadDeDefensas + " - Porcentaje de defensas = " + ((CantidadDeDefensas * 100 / (CantidadDeAtaques + CantidadDeDefensas))))
+}
 function tiroCompletoYSumatoria() {
     lanzarDadoAtaque();
     lanzarDadoDefensa();
     compararDados();
     sumatoriaDeComparaciones();
+    mostrarDatos();
 }
