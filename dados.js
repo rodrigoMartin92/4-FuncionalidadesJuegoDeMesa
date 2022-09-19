@@ -8,6 +8,8 @@ var ganadorDado1, ganadorDado2, ganadorDado3, ganadorDado4;
 
 var CantidadDeAtaques = 0, CantidadDeDefensas = 0;
 
+/* var PorcentajeAtq, PorcentajeDef; */
+
 function lanzarDadoAtaque() {
     var dadosAtacantes = [
         Math.floor(Math.random() * 6) + 1,
@@ -112,8 +114,15 @@ function sumatoriaDeComparaciones() {
 }
 
 function mostrarDatos() {
+
+    PorcentajeAtq=(CantidadDeAtaques * 100 / (CantidadDeAtaques + CantidadDeDefensas));
+
+    PorcentajeDef=(CantidadDeDefensas * 100 / (CantidadDeAtaques + CantidadDeDefensas));
+    console.log("PorcentajeAtq = "+PorcentajeAtq+" - PorcentajeDef = "+PorcentajeDef)
     document.getElementById("idResultadoAtaque").innerHTML = CantidadDeAtaques;
     document.getElementById("idResultadoDefensa").innerHTML = CantidadDeDefensas;
+    document.getElementById("idPorcentajeAtaque").innerHTML = " = %"+PorcentajeAtq;
+    document.getElementById("idPorcentajeDefensa").innerHTML = " = %"+PorcentajeDef;
 
     console.log("ganadorDado1 = " + ganadorDado1 + " - ganadorDado2 = " + ganadorDado2 + " - ganadorDado3 = " + ganadorDado3 + " - ganadorDado4 = " + ganadorDado4)
 
