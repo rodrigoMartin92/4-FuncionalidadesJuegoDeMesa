@@ -2,7 +2,7 @@ var dado1Atk = 0, dado2Atk = 0, dado3Atk = 0, dado4Atk = 0;
 
 var dado1Def = 0, dado2Def = 0, dado3Def = 0, dado4Def = 0;
 
-const Ataque = "Atacante", Defensa = "Defendiente";
+const Ataque = "Atacante", Defensa = "Defensor";
 
 var ganadorDado1, ganadorDado2, ganadorDado3, ganadorDado4;
 
@@ -22,7 +22,7 @@ function lanzarDadoAtaque() {
     dado3Atk = dadosAtacantes[2];
     dado4Atk = dadosAtacantes[3];
 
-/*     console.log("dado1Atk = " + dado1Atk + " - dado2Atk = " + dado2Atk + " - dado3Atk = " + dado3Atk + " - dado4Atk = " + dado4Atk) */
+    /*     console.log("dado1Atk = " + dado1Atk + " - dado2Atk = " + dado2Atk + " - dado3Atk = " + dado3Atk + " - dado4Atk = " + dado4Atk) */
 
     document.getElementById("idDadoA1").innerHTML = dado1Atk;
     document.getElementById("idDadoA2").innerHTML = dado2Atk;
@@ -31,20 +31,20 @@ function lanzarDadoAtaque() {
 }
 
 function lanzarDadoDefensa() {
-    var dadosDefendientes = [
+    var dadosDefensors = [
         Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1,
         Math.floor(Math.random() * 6) + 1
     ];
     /* ORDENAR ARREGLO EN JS */
-    dadosDefendientes.sort(function (a, b) { return b - a })
-    dado1Def = dadosDefendientes[0];
-    dado2Def = dadosDefendientes[1];
-    dado3Def = dadosDefendientes[2];
-    dado4Def = dadosDefendientes[3];
+    dadosDefensors.sort(function (a, b) { return b - a })
+    dado1Def = dadosDefensors[0];
+    dado2Def = dadosDefensors[1];
+    dado3Def = dadosDefensors[2];
+    dado4Def = dadosDefensors[3];
 
-/*     console.log("dado1Def = " + dado1Def + " - dado2Def = " + dado2Def + " - dado3Def = " + dado3Def + " - dado4Def = " + dado4Def) */
+    /*     console.log("dado1Def = " + dado1Def + " - dado2Def = " + dado2Def + " - dado3Def = " + dado3Def + " - dado4Def = " + dado4Def) */
 
     document.getElementById("idDadoD1").innerHTML = dado1Def;
     document.getElementById("idDadoD2").innerHTML = dado2Def;
@@ -81,37 +81,40 @@ function compararDados() {
     document.getElementById("idGanador2").innerHTML = ganadorDado2;
     document.getElementById("idGanador3").innerHTML = ganadorDado3;
     document.getElementById("idGanador4").innerHTML = ganadorDado4;
-    return ganadorDado1,ganadorDado2,ganadorDado3,ganadorDado4;
+    return ganadorDado1, ganadorDado2, ganadorDado3, ganadorDado4;
 }
 
 function sumatoriaDeComparaciones() {
     if (ganadorDado1 === "Atacante") {
         CantidadDeAtaques++;
     }
-    if (ganadorDado1 === "Defendiente") {
+    if (ganadorDado1 === "Defensor") {
         CantidadDeDefensas++;
     }
     if (ganadorDado2 === "Atacante") {
         CantidadDeAtaques++;
     }
-    if (ganadorDado2 === "Defendiente") {
+    if (ganadorDado2 === "Defensor") {
         CantidadDeDefensas++;
     }
     if (ganadorDado3 === "Atacante") {
         CantidadDeAtaques++;
     }
-    if (ganadorDado3 === "Defendiente") {
+    if (ganadorDado3 === "Defensor") {
         CantidadDeDefensas++;
     }
     if (ganadorDado4 === "Atacante") {
         CantidadDeAtaques++;
     }
-    if (ganadorDado4 === "Defendiente") {
+    if (ganadorDado4 === "Defensor") {
         CantidadDeDefensas++;
     }
 }
 
-function mostrarDatos(){
+function mostrarDatos() {
+    document.getElementById("idResultadoAtaque").innerHTML = CantidadDeAtaques;
+    document.getElementById("idResultadoDefensa").innerHTML = CantidadDeDefensas;
+
     console.log("ganadorDado1 = " + ganadorDado1 + " - ganadorDado2 = " + ganadorDado2 + " - ganadorDado3 = " + ganadorDado3 + " - ganadorDado4 = " + ganadorDado4)
 
     console.log("CantidadDeAtaques = " + CantidadDeAtaques + " - CantidadDeDefensas = " + CantidadDeDefensas + " - Porcentaje de defensas = " + ((CantidadDeDefensas * 100 / (CantidadDeAtaques + CantidadDeDefensas))))

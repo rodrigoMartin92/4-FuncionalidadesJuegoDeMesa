@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-4">
                     <p>Ganador</p>
-                    <button onclick="compararDados()" class="botonDado">Comparar</button>
+                    <button onclick="compararDados()" class="botonDado">Ganador</button>
 
                 </div>
             </div>
@@ -58,7 +58,17 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <button onclick="tiroCompletoYSumatoria()" class="botonDado">Comparativa de muchos tiros</button>
+                    <button onclick="tiroCompletoYSumatoria()" class="botonDado">Realizar ataque</button>
+                    <div class="datosDelAtaque1">
+                        <div>
+                            <h3>Dados ganados en ataque</h3>
+                            <h3 id="idResultadoAtaque">...</h3>
+                        </div>
+                        <div>
+                            <h3>Dados ganados en defensa</h3>
+                            <h3 id="idResultadoDefensa">...</h3>
+                        </div>
+                    </div>
                     <button onclick="mostrarDatos()" class="botonDado">Mostrar datos en consola</button>
                 </div>
             </div>
